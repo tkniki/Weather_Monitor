@@ -1,10 +1,16 @@
-﻿namespace Weather_Monitor.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Weather_Monitor.Models
 {
     public class IndoorData
     {
+        [Key]
         public int Id { get; set; }
+        [Required]
         public DateTime Date { get; set; }
-        public Temperature Temperature { get; set; }
+        [Required]
+        public double Kelvin { get; set; }
+        [Required]
         public int Humidity { get; set; }
     }
 }
