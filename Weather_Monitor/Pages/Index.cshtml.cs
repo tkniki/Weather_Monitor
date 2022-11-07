@@ -9,24 +9,16 @@ namespace Weather_Monitor.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger, AppDbContext db)
+        public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
-            _db = db;
         }
-        /*public IndexModel(AppDbContext db)
-        {
-        }*/
 
-        private readonly AppDbContext _db;
-        public IEnumerable<IndoorData> indoorDatas { get; set; }
-        public IEnumerable<OutdoorData> outdoorDatas { get; set; }
+        
 
         public void OnGet()
         {
-            indoorDatas = _db.indoorDatas;
-            outdoorDatas = _db.outdoorDatas;
+            
         }
     }
 }

@@ -2,4 +2,32 @@
 @model Weather_Monitor.Pages.Weather.IndexModel
 @{
 }
-Hello
+<div class="text-center">
+    <h1>
+        Indoor data
+    </h1>
+<table class="table-bordered table-striped" style="width:100%">
+    <thead >
+        <tr>
+                <th>Date</th>
+                <th>Temperature</th>
+                <th>Humidity</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach (var item in Model.indoorDatas)
+        {
+            double c = Math.Round(Temperature.Calculate_KelvinToCelsius(item.Kelvin), 2);
+
+            <tr>
+                <td>@item.Date</td>
+                <td>
+                    @c C°
+                </td>
+                <td>@item.Humidity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
