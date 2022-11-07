@@ -13,4 +13,25 @@
         <li>Track your outdoor & indoor weather information.</li>
         <li>Choose from the various options to display your weather data.</li>
     </ul>
+    <div class="text-center">
+        <table>
+            <thead>
+                Indoor data
+            </thead>
+            <tbody>
+                @foreach(var item in Model.indoorDatas)
+                {
+                    double c = Math.Round(Temperature.Calculate_KelvinToCelsius(item.Kelvin), 2);
+                    
+                    <tr>
+                        <td>@item.Date</td>
+                        <td>
+                            @c C°
+                        </td>
+                        <td>@item.Humidity</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </div>

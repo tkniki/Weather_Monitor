@@ -12,7 +12,7 @@ using Weather_Monitor.DbData;
 namespace Weather_Monitor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221107134108_AddIndoorOutdoorDataToDb")]
+    [Migration("20221107141942_AddIndoorOutdoorDataToDb")]
     partial class AddIndoorOutdoorDataToDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
