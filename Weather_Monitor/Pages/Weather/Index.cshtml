@@ -16,14 +16,13 @@
         
     </thead>
     <tbody>
-        @foreach (var item in Model.indoorDatas)
+        @foreach (var item in Model.weatherDatas)
         {
-            double c = Math.Round(Temperature.Calculate_KelvinToCelsius(item.Kelvin), 2);
 
             <tr>
                 <td>@item.Date</td>
                 <td>
-                    @c C°
+                    @item.InCelsius C°
                 </td>
                 <td>@item.Humidity</td>
             </tr>

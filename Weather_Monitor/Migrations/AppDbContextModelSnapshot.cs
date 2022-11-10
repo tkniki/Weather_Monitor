@@ -8,7 +8,7 @@ using Weather_Monitor.DbData;
 
 #nullable disable
 
-namespace Weather_Monitor.Migrations
+namespace WeatherMonitor.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -17,18 +17,18 @@ namespace Weather_Monitor.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Weather_Monitor.Models.IndoorData", b =>
+            modelBuilder.Entity("Weather_Monitor.Models.WeatherData", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -36,26 +36,10 @@ namespace Weather_Monitor.Migrations
                     b.Property<int>("Humidity")
                         .HasColumnType("int");
 
-                    b.Property<double>("Kelvin")
+                    b.Property<double>("InCelsius")
                         .HasColumnType("float");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("indoorDatas");
-                });
-
-            modelBuilder.Entity("Weather_Monitor.Models.OutdoorData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Kelvin")
+                    b.Property<double>("OutCelsius")
                         .HasColumnType("float");
 
                     b.Property<double>("Pressure")
@@ -66,7 +50,7 @@ namespace Weather_Monitor.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("outdoorDatas");
+                    b.ToTable("weatherDatas");
                 });
 #pragma warning restore 612, 618
         }

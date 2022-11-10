@@ -10,16 +10,14 @@ namespace Weather_Monitor.Pages.Weather
     {
 
         private readonly AppDbContext _db;
-        public IEnumerable<IndoorData> indoorDatas { get; set; }
-        public IEnumerable<OutdoorData> outdoorDatas { get; set; }
+        public IEnumerable<WeatherData> weatherDatas { get; set; }
         public IndexModel(AppDbContext db)
         {
             _db = db;
         }
         public void OnGet()
         {
-            indoorDatas = _db.indoorDatas;
-            outdoorDatas = _db.outdoorDatas;
+            weatherDatas = _db.weatherDatas;
         }
     }
 }
