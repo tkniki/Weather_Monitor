@@ -9,7 +9,7 @@ namespace Weather_Monitor.Pages.Weather.CRUD
     {
         private readonly AppDbContext _db;
         [BindProperty]
-        public WeatherData weatherData { get; set; }
+        public WeatherData WeatherData { get; set; }
         public UpdateWeatherModel(AppDbContext db)
         {
             _db = db;
@@ -17,7 +17,7 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 
         public void OnGet(int id)
         {
-            weatherData = _db.WeatherDatas.Find(id);
+            WeatherData = _db.WeatherDatas.Find(id);
 
         }
 
@@ -28,7 +28,7 @@ namespace Weather_Monitor.Pages.Weather.CRUD
                 return Page();
             }
 
-            _db.WeatherDatas.Update(weatherData);
+            _db.WeatherDatas.Update(WeatherData);
             await _db.SaveChangesAsync();
             return RedirectToPage("../Index");
         }
