@@ -22,7 +22,7 @@ namespace Weather_Monitor.Pages.Weather.CRUD
         public async Task<IActionResult> OnPost()
         {
 
-            await _db.weatherDatas.AddAsync(WeatherData);
+            await _db.WeatherDatas.AddAsync(WeatherData);
             await _db.SaveChangesAsync();
             return RedirectToPage("../Index");
         }

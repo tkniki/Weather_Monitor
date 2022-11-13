@@ -15,6 +15,7 @@
                 <th>Temperature outside (C°)</th>
                 <th>Atmospheric pressure (hPa)</th>
                 <th>Rain (mm)</th>
+                <th></th>
         </tr>
         
     </thead>
@@ -29,6 +30,9 @@
                 <td>@item.OutCelsius</td>
                 <td>@item.Pressure</td>
                 <td>@item.Rain</td>
+                <td>
+                    <a asp-page="CRUD/UpdateWeather" asp-route-id="@item.Id">Edit</a>
+                </td>
             </tr>
         }
     </tbody>

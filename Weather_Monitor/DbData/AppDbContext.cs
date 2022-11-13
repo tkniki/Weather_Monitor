@@ -10,7 +10,7 @@ namespace Weather_Monitor.DbData
         {
 
         }
-        public DbSet<WeatherData> weatherDatas { get; set; }
+        public DbSet<WeatherData> WeatherDatas { get; set; }
 
     }
 }

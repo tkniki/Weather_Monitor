@@ -1,4 +1,60 @@
 ﻿@page
 @model Weather_Monitor.Pages.Weather.CRUD.UpdateWeatherModel
-@{
+
+<form method="post">
+	<input hidden asp-for="weatherData.Id"/>
+	<div>
+		<div>
+			<h1>Update weather information</h1>
+		</div>
+		<label asp-for="@Model.weatherData.Date">Date</label>
+		<input asp-for="@Model.weatherData.Date" class="form-control" id="date"/>
+		<span asp-validation-for="@Model.weatherData.Date" class="text-danger"></span>
+		<div>
+			<h2>Indoor information</h2>
+		</div>
+		<div>
+			<label asp-for="@Model.weatherData.InCelsius">Celsius</label>
+			<input asp-for="@Model.weatherData.InCelsius" class="form-control"/>
+			<span asp-validation-for="@Model.weatherData.InCelsius" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.weatherData.Humidity">Humidity(%)</label>
+			<input asp-for="@Model.weatherData.Humidity" class="form-control" />
+			<span asp-validation-for="@Model.weatherData.Humidity" class="text-danger"></span>
+		</div>
+
+		<div>
+			<h2>Outdoor information</h2>
+		</div>
+
+		<div>
+			<label asp-for="@Model.weatherData.OutCelsius">Celsius</label>
+			<input asp-for="@Model.weatherData.OutCelsius" class="form-control" />
+			<span asp-validation-for="@Model.weatherData.OutCelsius" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.weatherData.Pressure">Pressure(hPa)</label>
+			<input asp-for="@Model.weatherData.Pressure" class="form-control" />
+			<span asp-validation-for="@Model.weatherData.Pressure" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.weatherData.Rain">Rain(mm)</label>
+			<input asp-for="@Model.weatherData.Rain" class="form-control" />
+			<span asp-validation-for="@Model.weatherData.Rain" class="text-danger"></span>
+
+		</div>
+		<button type="submit">Update</button>
+	</div>
+</form>
+
+
+
+@section Scripts{
+	@{
+	<partial name="_ValidationScriptsPartial.cshtml"/>
+	}
 }

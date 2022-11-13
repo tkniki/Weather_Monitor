@@ -17,7 +17,7 @@ namespace Weather_Monitor.Pages.Weather
         }
         public void OnGet()
         {
-            weatherDatas = _db.weatherDatas;
+            weatherDatas = _db.WeatherDatas;
         }
     }
 }
