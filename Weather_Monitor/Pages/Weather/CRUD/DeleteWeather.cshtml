@@ -1,0 +1,52 @@
+﻿@page
+@model Weather_Monitor.Pages.Weather.CRUD.RemoveWeatherModel
+
+<form method="post">
+	<input hidden asp-for="WeatherData.Id" />
+	<div>
+		<div>
+			<h1>Remove weather information</h1>
+		</div>
+		<label asp-for="@Model.WeatherData.Date">Date</label>
+		<input asp-for="@Model.WeatherData.Date" class="form-control" id="date" disabled="disabled"/>
+		<span asp-validation-for="@Model.WeatherData.Date" class="text-danger"></span>
+		<div>
+			<h2>Indoor information</h2>
+		</div>
+		<div>
+			<label asp-for="@Model.WeatherData.InCelsius">Celsius</label>
+			<input asp-for="@Model.WeatherData.InCelsius" class="form-control" disabled="disabled" />
+			<span asp-validation-for="@Model.WeatherData.InCelsius" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.WeatherData.Humidity">Humidity(%)</label>
+			<input asp-for="@Model.WeatherData.Humidity" class="form-control" disabled="disabled" />
+			<span asp-validation-for="@Model.WeatherData.Humidity" class="text-danger" ></span>
+		</div>
+
+		<div>
+			<h2>Outdoor information</h2>
+		</div>
+
+		<div>
+			<label asp-for="@Model.WeatherData.OutCelsius">Celsius</label>
+			<input asp-for="@Model.WeatherData.OutCelsius" class="form-control" disabled="disabled" />
+			<span asp-validation-for="@Model.WeatherData.OutCelsius" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.WeatherData.Pressure">Pressure(hPa)</label>
+			<input asp-for="@Model.WeatherData.Pressure" class="form-control" disabled="disabled" />
+			<span asp-validation-for="@Model.WeatherData.Pressure" class="text-danger"></span>
+
+			<br />
+
+			<label asp-for="@Model.WeatherData.Rain">Rain(mm)</label>
+			<input asp-for="@Model.WeatherData.Rain" class="form-control" disabled="disabled" />
+			<span asp-validation-for="@Model.WeatherData.Rain" class="text-danger"></span>
+
+		</div>
+		<button type="submit">Remove</button>
+	</div>
+</form>
