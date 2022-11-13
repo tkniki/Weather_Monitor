@@ -17,13 +17,11 @@ namespace Weather_Monitor.Pages.Weather.CRUD
         }
         public void OnGet()
         {
+           
         }
         public async Task<IActionResult> OnPost()
         {
-            /*if (Check)
-            {
 
-            }*/
             await _db.weatherDatas.AddAsync(WeatherData);
             await _db.SaveChangesAsync();
             return RedirectToPage("../Index");
