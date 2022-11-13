@@ -23,7 +23,8 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 
         public async Task<IActionResult> OnPost()
         {
-            if (!ModelState.IsValid)
+            
+            if (!ModelState.IsValid || _db.WeatherDatas.FirstOrDefault(x => x.Id == WeatherData.Id) == null)
             {
                 return Page();
             }
