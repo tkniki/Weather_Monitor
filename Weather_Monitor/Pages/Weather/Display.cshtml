@@ -1,0 +1,47 @@
+﻿@page
+@model Weather_Monitor.Pages.Weather.DisplayModel
+@{
+}
+
+<div class="text-center">
+    <div>
+        <h1>
+            Measurements
+        </h1>
+
+    </div>
+    
+    @switch (Model.SelectedListItemId)
+    {
+        case 0:
+            <partial name="TableDisplay/_All" model="Model.weatherDatas" />
+            break;
+        case 1:
+            <partial name="TableDisplay/_Indoor" model="Model.weatherDatas" />
+            break;
+        case 2:
+            <partial name="TableDisplay/_Indoor" model="Model.weatherDatas" />
+            break;
+        default:
+            break;
+    }
+    
+    <br />
+    
+
+
+<form metod="POST">
+        <div>
+            <label class="control-label">Select filter type</label>
+            <select name="filters" class="form-control form-select" asp-for="SelectedListItemId" asp-items="Model.listItems">
+            </select>
+        </div>
+        <div>
+
+        </div>
+        <div>
+            <button type="submit">Filter</button>
+        </div>
+</form>
+
+</div>
