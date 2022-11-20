@@ -5,12 +5,12 @@ using Weather_Monitor.Models;
 
 namespace Weather_Monitor.Pages.Weather.CRUD
 {
-    public class RemoveWeatherModel : PageModel
+    public class DeleteWeatherModel : PageModel
     {
         private readonly AppDbContext _db;
         [BindProperty]
         public WeatherData WeatherData { get; set; }
-        public RemoveWeatherModel(AppDbContext db)
+        public DeleteWeatherModel(AppDbContext db)
         {
             _db = db;
         }

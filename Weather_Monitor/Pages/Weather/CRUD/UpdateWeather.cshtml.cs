@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using Weather_Monitor.DbData;
 using Weather_Monitor.Models;
 
@@ -23,8 +24,9 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 
         public async Task<IActionResult> OnPost()
         {
+            //_db.Entry<WeatherData>(WeatherData).State = EntityState.Detached;
             
-            if (!ModelState.IsValid || _db.WeatherDatas.FirstOrDefault(x => x.Id == WeatherData.Id) == null)
+            if (!ModelState.IsValid || _db.WeatherDatas.Any(x => x.Id == WeatherData.Id) == false)
             {
                 return Page();
             }
