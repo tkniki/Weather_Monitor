@@ -1,10 +1,6 @@
 ﻿@using Weather_Monitor.Models;
 @model IEnumerable<WeatherData>
 
-@{
-    List<WeatherData> data = Model.ToList<WeatherData>();
-
-}
 
     <h2>All data</h2>
 <table class="table-bordered table-striped" style="width:100%">
@@ -21,7 +17,7 @@
 
     </thead>
     <tbody>
-        @foreach (var item in data)
+        @foreach (var item in Model)
         {
 
             <tr>

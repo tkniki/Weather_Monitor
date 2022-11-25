@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Weather_Monitor.DbData;
+using Weather_Monitor.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +10,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
     ));
+
+//builder.Services.AddScoped<AppDbContext>();
 
 var app = builder.Build();
 

@@ -20,5 +20,6 @@ namespace Weather_Monitor.Pages
         {
             
         }
+
     }
 }

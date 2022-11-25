@@ -1,5 +1,37 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Weather_Monitor.Models;
+@model IEnumerable<WeatherData>
+
+
+    <h2>Average temperature</h2>
+<table class="table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Temperature inside (C°)</th>
+            <th>Humidity (%)</th>
+            <th>Temperature outside (C°)</th>
+            <th>Atmospheric pressure (hPa)</th>
+            <th>Rain (mm)</th>
+            <th></th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@item.InCelsius</td>
+                    <td>@item.Humidity</td>
+                    <td>@item.OutCelsius</td>
+                    <td>@item.Pressure</td>
+                    <td>@item.Rain</td>
+                    <td>
+                        <a asp-page="CRUD/UpdateWeather" asp-route-id="@item.Id">Edit</a>
+                        <a asp-page="CRUD/DeleteWeather" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>
