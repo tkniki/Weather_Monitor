@@ -24,8 +24,8 @@
         </div>
         <div>
             <div>
-                <input type="radio" id="alltime" name="time" checked="checked" />All
-                <input type="radio" id="timerange" name="time" />Choose time range
+                <input type="radio" id="alltime" name="time" @(Model.TimeRange ? "" : "checked") >All
+                <input type="radio" id="timerange" name="time" @(Model.TimeRange ? "checked" : "") >Choose time range
             </div>
 
             <label class="control-label">From</label>
@@ -71,6 +71,12 @@
     let timeTo = document.querySelector("#To");
     let timeAll = document.querySelector("#alltime");
     let timeRange = document.querySelector("#timerange");
+
+    if(timeRange.checked) {
+        timeFrom.disabled = false;
+        timeTo.disabled = false;
+    }
+    
 
     timeAll.addEventListener('click', () => {
         timeFrom.disabled = true;

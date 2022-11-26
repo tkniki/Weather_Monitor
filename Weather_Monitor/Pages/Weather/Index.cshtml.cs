@@ -53,6 +53,7 @@ namespace Weather_Monitor.Pages.Weather
                 var dateAWeekAgo = dateNow.AddDays(-7);
                 From = dateAWeekAgo;
                 To = dateNow;
+                TimeRange = false;
             }
 
             SelectedListItemId = filters;
