@@ -1,0 +1,41 @@
+﻿@using Weather_Monitor.Models;
+@model IEnumerable<WeatherData>
+
+<div id="linechart_material" style="width: 900px; height: 500px"></div>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+    google.charts.load('current', {'packages':['line']});
+      google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+
+      var data = new google.visualization.DataTable();
+      data.addColumn('datetime', 'Date');
+      data.addColumn('number', 'Inside temperature');
+      data.addColumn('number', 'Outside temprature');
+
+      data.addRows([
+        @foreach (var item in Model)
+    {
+        @Html.Raw($"[new Date(Date.UTC({item.Date.Year}, {item.Date.Month}, {item.Date.Day}, {item.Date.Hour}, {item.Date.Minute}, {item.Date.Second})),   {item.InCelsius},   {item.OutCelsius}],")
+        ;
+
+    }
+      ]);
+
+      var options = {
+        chart: {
+          title: 'Box Office Earnings in First Two Weeks of Opening',
+          subtitle: 'in millions of dollars (USD)'
+        },
+        width: 900,
+        height: 500
+      };
+
+      var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+      chart.draw(data, google.charts.Line.convertOptions(options));
+    }
+</script>

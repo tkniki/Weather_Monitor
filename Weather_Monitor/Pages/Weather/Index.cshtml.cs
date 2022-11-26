@@ -16,7 +16,8 @@ namespace Weather_Monitor.Pages.Weather
                 new SelectListItem { Value = "0", Text = "All"},
                 new SelectListItem { Value = "1", Text = "Only indoor"},
                 new SelectListItem { Value = "2", Text = "Only outdoor"},
-                new SelectListItem { Value = "3", Text = "Average temperature"}
+                new SelectListItem { Value = "3", Text = "Average temperature per day"},
+                new SelectListItem { Value = "4", Text = "Temperature on graph"}
         };
 
         [BindProperty]
