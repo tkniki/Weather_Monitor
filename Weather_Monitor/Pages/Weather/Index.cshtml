@@ -2,9 +2,9 @@
 @model Weather_Monitor.Pages.Weather.IndexModel
 @{
     
-	var dateNo1w = new DateTime(DateTime.Now.Ticks - (DateTime.Now.Ticks % TimeSpan.TicksPerSecond), DateTimeKind.Unspecified);
+	/*var dateNo1w = new DateTime(DateTime.Now.Ticks - (DateTime.Now.Ticks % TimeSpan.TicksPerSecond), DateTimeKind.Unspecified);
 	var dateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Unspecified);
-	var dateAWeekAgo = dateNow.AddDays(-7);
+	var dateAWeekAgo = dateNow.AddDays(-7);*/
 
 }
 
@@ -23,11 +23,16 @@
             </select>
         </div>
         <div>
+            <div>
+                <input type="radio" id="alltime" name="time" checked="checked" />All
+                <input type="radio" id="timerange" name="time" />Choose time range
+            </div>
+
             <label class="control-label">From</label>
-            <input name="from" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="From" id="From" value="@(dateAWeekAgo.ToString("s"))" />
+            <input name="from" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="From" id="From" disabled="disabled" />
 
             <label class="control-label">To</label>
-            <input name="to" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="To" id="To" value="@(dateNow.ToString("s"))" />
+            <input name="to" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="To" id="To" disabled="disabled" />
         </div>
         <div>
             <button type="submit">Filter</button>
@@ -60,3 +65,21 @@
 
 
 </div>
+
+<script>
+    let timeFrom = document.querySelector("#From");
+    let timeTo = document.querySelector("#To");
+    let timeAll = document.querySelector("#alltime");
+    let timeRange = document.querySelector("#timerange");
+
+    timeAll.addEventListener('click', () => {
+        timeFrom.disabled = true;
+        timeTo.disabled = true;
+    });
+
+    timeRange.addEventListener('click', () => {
+        timeFrom.disabled = false;
+        timeTo.disabled = false;
+    });
+
+</script>

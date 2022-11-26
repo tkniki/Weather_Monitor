@@ -25,6 +25,7 @@ namespace Weather_Monitor.Pages.Weather
         public DateTime From { get; set; }
         [BindProperty]
         public DateTime To { get; set; }
+        public bool TimeRange = false;
 
         public IndexModel(AppDbContext db)
         {
@@ -40,16 +41,22 @@ namespace Weather_Monitor.Pages.Weather
             if (from != DateTime.MinValue && to != DateTime.MaxValue)
             {
                 weatherDatas = _db.WeatherDatas.Where(x => DateTime.Compare(from, x.Date) <= 0 && DateTime.Compare(to, x.Date) >= 0);
+                From = from;
+                To = to;
+                TimeRange = true;
             }
             else
             {
                 weatherDatas = _db.WeatherDatas;
+
+                var dateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Unspecified);
+                var dateAWeekAgo = dateNow.AddDays(-7);
+                From = dateAWeekAgo;
+                To = dateNow;
             }
 
             SelectedListItemId = filters;
             listItems[filters].Selected = true;
-            From = from;
-            To = to;
         }
 
         public IActionResult OnPostFilter()
@@ -57,9 +64,7 @@ namespace Weather_Monitor.Pages.Weather
             //return RedirectToPage($"./Index?filters={SelectedListItemId}");
             return RedirectToPage("./Index", "Filter", new { filters = SelectedListItemId, from = From, to = To });
 
-            var dateNo1w = new DateTime(DateTime.Now.Ticks - (DateTime.Now.Ticks % TimeSpan.TicksPerSecond), DateTimeKind.Unspecified);
-            var dateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Unspecified);
-            var dateAWeekAgo = dateNow.AddDays(-7);
+            
         }
     }
 }
