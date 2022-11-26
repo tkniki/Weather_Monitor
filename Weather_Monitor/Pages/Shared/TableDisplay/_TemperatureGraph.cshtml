@@ -1,12 +1,39 @@
 ﻿@using Weather_Monitor.Models;
 @model IEnumerable<WeatherData>
 
-<div id="linechart_material" style="width: 900px; height: 500px"></div>
+<div id="columnchart_material" style="width: auto; height: 500px;"></div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
 
-    google.charts.load('current', {'packages':['line']});
+    google.charts.load('current', { 'packages': ['bar'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Date', 'Outside temperature', 'Inside temperature'],
+            @foreach (var item in Model)
+    {
+        @Html.Raw($"[new Date(Date.UTC({item.Date.Year}, {item.Date.Month - 1}, {item.Date.Day}, {item.Date.Hour}, {item.Date.Minute}, {item.Date.Second})),   {item.OutCelsius},   {item.InCelsius}],")
+        ;
+    }
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Temperature data',
+                subtitle: 'Inside and outside temperature',
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    
+    
+    
+    /*google.charts.load('current', {'packages':['line']});
       google.charts.setOnLoadCallback(drawChart);
 
     function drawChart() {
@@ -17,13 +44,13 @@
       data.addColumn('number', 'Outside temprature');
 
       data.addRows([
-        @foreach (var item in Model)
-    {
-        @Html.Raw($"[new Date(Date.UTC({item.Date.Year}, {item.Date.Month}, {item.Date.Day}, {item.Date.Hour}, {item.Date.Minute}, {item.Date.Second})),   {item.InCelsius},   {item.OutCelsius}],")
-        ;
+        //foreach (var item in Model)
+        //{
+        //Html.Raw($"[new Date(Date.UTC({item.Date.Year}, {item.Date.Month}, {item.Date.Day}, {item.Date.Hour}, {item.Date.Minute}, {item.Date.Second})),   {item.InCelsius},   {item.OutCelsius}],")
+        //;
 
-    }
-      ]);
+        //}
+      //]);
 
       var options = {
         chart: {
@@ -37,5 +64,5 @@
       var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
       chart.draw(data, google.charts.Line.convertOptions(options));
-    }
+    }*/
 </script>
