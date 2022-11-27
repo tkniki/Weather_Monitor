@@ -1,5 +1,5 @@
 html {
-  font-size: 14px;
+  font-size: 2em;
 }
 
 @media (min-width: 768px) {
@@ -15,4 +15,30 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+form {
+    padding: 2em;
+    margin-top: 2em;
+    margin-bottom:5em;
+    border: 1px solid;
+    text-align:left;
+}
+
+table {
+    margin: 2em 0em;
+}
+
+hr {
+    margin-bottom: 5em;
+}
+
+input.form-control, select.form-control {
+    width:auto;
+    margin: 1em 0em;
+}
+
+
+h2 {
+    text-align: left;
 }

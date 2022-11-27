@@ -1,5 +1,8 @@
 ﻿@page
 @model Weather_Monitor.Pages.Weather.CRUD.AddWeatherModel
+@{
+	ViewData["Title"] = "Add measurement";
+}
 
 <form method="post">
 	<div>
@@ -46,7 +49,7 @@
 			<span asp-validation-for="@Model.WeatherData.Rain" class="text-danger"></span>
 
 		</div>
-		<button type="submit">Submit</button>
+		<button type="submit" class="btn btn-outline-info">Submit</button>
 	</div>
 </form>
 

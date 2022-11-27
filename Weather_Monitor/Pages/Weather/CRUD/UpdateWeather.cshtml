@@ -1,5 +1,8 @@
 ﻿@page
 @model Weather_Monitor.Pages.Weather.CRUD.UpdateWeatherModel
+@{
+	ViewData["Title"] = "Edit data";
+}
 
 <form method="post">
 	<input hidden asp-for="WeatherData.Id"/>
@@ -47,7 +50,7 @@
 			<span asp-validation-for="@Model.WeatherData.Rain" class="text-danger"></span>
 
 		</div>
-		<button type="submit">Update</button>
+		<button type="submit" class="btn btn-outline-info">Update</button>
 	</div>
 </form>
 

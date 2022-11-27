@@ -1,5 +1,8 @@
 ﻿@page
 @model Weather_Monitor.Pages.Weather.CRUD.DeleteWeatherModel
+@{
+	ViewData["Title"] = "Delete data";
+}
 
 <form method="post">
 	<input hidden asp-for="WeatherData.Id" />
@@ -47,6 +50,6 @@
 			<span asp-validation-for="@Model.WeatherData.Rain" class="text-danger"></span>
 
 		</div>
-		<button type="submit">Remove</button>
+		<button type="submit" class="btn btn-outline-info">Remove</button>
 	</div>
 </form>

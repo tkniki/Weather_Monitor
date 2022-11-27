@@ -2,9 +2,7 @@
 @model Weather_Monitor.Pages.Weather.IndexModel
 @{
     
-	/*var dateNo1w = new DateTime(DateTime.Now.Ticks - (DateTime.Now.Ticks % TimeSpan.TicksPerSecond), DateTimeKind.Unspecified);
-	var dateNow = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second, DateTimeKind.Unspecified);
-	var dateAWeekAgo = dateNow.AddDays(-7);*/
+    ViewData["Title"] = "Measurements";
 
 }
 
@@ -15,49 +13,67 @@
         </h1>
 
     </div>
+    <div>
+        <form metod="POST">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6">
+                    <label class="control-label">Select filter type</label>
+                    <select name="filters" class="form-control form-select" asp-for="SelectedListItemId" asp-items="Model.listItems">
+                    </select>
+                    </div>
+                    <div class="col-6">
+                        <div class="row align-items-center">
+                            <div class="col-5">
+                                <div><input class="form-check-input" type="radio" id="alltime" name="time" @(Model.TimeRange ? "" : "checked")>  <span> All</span></div>
+                                    <br />
+                                <div><input class="form-check-input" type="radio" id="timerange" name="time" @(Model.TimeRange ? "checked" : "")> <span> Choose time range</span></div>
 
-    <form metod="POST">
-        <div>
-            <label class="control-label">Select filter type</label>
-            <select name="filters" class="form-control form-select" asp-for="SelectedListItemId" asp-items="Model.listItems">
-            </select>
-        </div>
-        <div>
-            <div>
-                <input type="radio" id="alltime" name="time" @(Model.TimeRange ? "" : "checked") >All
-                <input type="radio" id="timerange" name="time" @(Model.TimeRange ? "checked" : "") >Choose time range
+                            </div>
+                            <div class="col-7">
+                                    <label class="control-label">From</label>
+                                <input name="from" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="From" id="From" disabled="disabled" />
+
+                                <label class="control-label">To</label>
+                                <input name="to" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="To" id="To" disabled="disabled" />
+                            </div>
+
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                    <button type="submit" class="btn btn-outline-info">Filter</button>
+                    </div>
+                </div>
             </div>
+        </form>
+    </div>
 
-            <label class="control-label">From</label>
-            <input name="from" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="From" id="From" disabled="disabled" />
-
-            <label class="control-label">To</label>
-            <input name="to" class="form-control" asp-format="{0:yyyy-MM-ddTHH:mm}" type="datetime-local" asp-for="To" id="To" disabled="disabled" />
-        </div>
-        <div>
-            <button type="submit">Filter</button>
-        </div>
-    </form>
+    <hr >
+    <br />
     
     @switch (Model.SelectedListItemId)
     {
         case 0:
-            <partial name="TableDisplay/_All" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_All" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
         case 1:
-            <partial name="TableDisplay/_Indoor" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_Indoor" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
         case 2:
-            <partial name="TableDisplay/_Outdoor" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_Outdoor" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
         case 3:
-            <partial name="TableDisplay/_AverageTemp" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_AverageTemp" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
         case 4:
-            <partial name="TableDisplay/_TemperatureGraph" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_TemperatureGraph" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
         default:
-            <partial name="TableDisplay/_All" model="Model.weatherDatas" />
+            <partial name="TableDisplay/_All" model="Model.weatherDatas.OrderBy(x=>x.Date)" />
             break;
     }
     
