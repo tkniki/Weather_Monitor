@@ -18,7 +18,7 @@ namespace Weather_Monitor.Pages
 
         public void OnGet()
         {
-            
+
         }
 
     }

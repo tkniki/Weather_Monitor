@@ -21,10 +21,17 @@ namespace Weather_Monitor.Pages.Weather.CRUD
         }
         public async Task<IActionResult> OnPost()
         {
+            if (ModelState.IsValid)
+            {
+                await _db.WeatherDatas.AddAsync(WeatherData);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("../Index");
 
-            await _db.WeatherDatas.AddAsync(WeatherData);
-            await _db.SaveChangesAsync();
-            return RedirectToPage("../Index");
+            }
+            else
+            {
+                return Page();
+            }
         }
     }
 }

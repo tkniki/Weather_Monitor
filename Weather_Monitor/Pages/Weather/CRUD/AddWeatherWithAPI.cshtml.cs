@@ -45,7 +45,7 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 				double pressure = double.Parse((obj["main"]["pressure"]).ToString());
 				//JToken token = obj["rain"]["rain1h"];
 
-				int rain = obj.SelectToken("rain") == null ? 0 : int.Parse((obj["rain"]["rain1h"]).ToString());
+				int rain = obj.SelectToken("rain") == null ? 0 : (int)Math.Floor(double.Parse((obj["rain"]["rain1h"]).ToString()));
 
 				WeatherData.OutCelsius = temperature;
 				WeatherData.Pressure = pressure;
@@ -97,9 +97,16 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 
         public async Task<IActionResult> OnPostAdd()
         {
-			await _db.WeatherDatas.AddAsync(WeatherData);
-			await _db.SaveChangesAsync();
-			return RedirectToPage("../Index");
+			if (ModelState.IsValid)
+			{
+                await _db.WeatherDatas.AddAsync(WeatherData);
+                await _db.SaveChangesAsync();
+                return RedirectToPage("../Index");
+            }
+			else
+			{
+				return Page();
+			}
 		}
 
         
