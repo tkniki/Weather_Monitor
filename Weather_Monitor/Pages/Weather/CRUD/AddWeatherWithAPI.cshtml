@@ -1,0 +1,16 @@
+﻿@page
+@model Weather_Monitor.Pages.Weather.CRUD.AddWeatherWithAPIModel
+@{
+}
+
+<form method="post">
+	<h1>Choose location</h1>
+	<label>City</label>
+	<br />
+	<input type="text" class="form-control" asp-for="City"/>
+	<span asp-validation-for="@Model.City" class="text-danger"></span>
+	<button type="submit" class="btn btn-primary">Set</button>
+
+	<label>@Model.Lat</label>
+	<label>@Model.Lon</label>
+</form>
