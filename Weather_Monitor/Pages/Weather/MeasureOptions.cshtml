@@ -1,17 +1,52 @@
 ﻿@page
 @model Weather_Monitor.Pages.Weather.MeasureOptionsModel
 @{
+	ViewData["Title"] = "Choose option";
 }
 <h1>Options for outdoor measurements:</h1>
-<button class="btn btn-primary">I have the exact measurements</button>
+	<div style="border:1px solid;padding:2em;">
+	<h2 class="m-option">
+		1
+	</h2>
+	<br />
+	<a asp-page="CRUD/AddWeather" style="font-size:1.5em">I have the exact measurements</a>
+	</div>
 	
-	<button class="btn btn-primary">
-	<a asp-page="CRUD/AddWeatherWithAPI"></a>
-		
-	</button>
-	<form method="post">
-		<label>Provide data by location</label>
-		<input type="text" class="form-control" asp-for="City" />
-		<span asp-validation-for="@Model.City" class="text-danger"></span>
-		<button type="submit" class="btn btn-primary">Set</button>
-	</form>
+	
+
+	
+<form method="post">
+	<div class="container-fluid">
+			
+		<div class="row">
+			
+			<div class="col-6">
+				<h2 class="m-option">2</h2>
+				<label>Provide data by location</label>
+				<input type="text" class="form-control" asp-for="City" />
+				<span asp-validation-for="@Model.City" class="text-danger" style="display:block;"></span>
+				<button type="submit" class="btn btn-outline-info" style="width:20%;">Set</button>
+			</div>
+
+			<div class="col-6" style="align-items:center;font-weight:bold;">
+				<h3 style="margin-top:1em;">Note</h3>
+				<ul>
+					<li>
+						<p>Weather Monitor doesn't save the measurements with location. For the sake of accuracy, please use this web application for only one location.</p>
+
+					</li>
+					<li>
+						<p>The received data represents recent weather data. Use this option only if you would like to upload recent measurement.</p>
+
+					</li>
+				</ul>
+			</div>
+
+		</div>
+
+	</div>
+	
+</form>
+	
+
+	

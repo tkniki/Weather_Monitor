@@ -42,3 +42,41 @@ input.form-control, select.form-control {
 h2 {
     text-align: left;
 }
+
+.infobox, #infobox {
+    width: 50%;
+    text-align:justify;
+    vertical-align: central;
+    background-color:rgba(55,141,252,0.7);
+    box-shadow: 0.5em 0.5em 1em;
+    margin: 1em;
+    margin-left: 0px;
+    opacity: 0.5;
+}
+
+.infobox:hover {
+    opacity: 1;
+}
+
+.infobox p, #infobox p {
+    margin: auto;
+    padding: 1em 1em;
+    color:white;
+    text-shadow: 2px 3px 3px black;
+}
+
+.infobox a {
+    color: white;
+}
+
+label, span {
+    font-weight: bold;
+}
+
+.m-option {
+    background: url("weather.svg") 0 no-repeat;
+    padding: 1em;
+    display:inline-block;
+    font-weight:bold;
+    text-shadow:2px 2px 3px azure;
+}

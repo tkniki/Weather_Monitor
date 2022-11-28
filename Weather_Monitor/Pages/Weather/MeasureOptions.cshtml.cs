@@ -22,9 +22,14 @@ namespace Weather_Monitor.Pages.Weather
         }
         public async Task<IActionResult> OnPost()
         {
+			if (string.IsNullOrEmpty(City))
+			{
+				ModelState.AddModelError("City", "City name is incorrect.");
+				return Page();
+			}
 			var response = await _client.GetAsync($"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=1&appid=ed3adae2b20a3ce0aee2eccc7e592c3a");
 			var result = await response.Content.ReadAsStringAsync();
-			if (result != "[]" || City.IsNullOrEmpty())
+			if (result != "[]")
 			{
 				JArray array = JArray.Parse(result);
 				JObject obj = JObject.Parse(array[0].ToString());
