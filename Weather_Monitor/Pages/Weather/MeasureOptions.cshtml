@@ -6,6 +6,12 @@
 <button class="btn btn-primary">I have the exact measurements</button>
 	
 	<button class="btn btn-primary">
-	<a asp-page="CRUD/AddWeatherWithAPI">Provide data by location</a>
+	<a asp-page="CRUD/AddWeatherWithAPI"></a>
 		
 	</button>
+	<form method="post">
+		<label>Provide data by location</label>
+		<input type="text" class="form-control" asp-for="City" />
+		<span asp-validation-for="@Model.City" class="text-danger"></span>
+		<button type="submit" class="btn btn-primary">Set</button>
+	</form>

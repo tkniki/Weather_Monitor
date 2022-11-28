@@ -3,20 +3,7 @@
 @{
 }
 
-<form method="post">
-	<h1>Choose location</h1>
-	<label>City</label>
-	<br />
-	<input type="text" class="form-control" asp-for="City"/>
-	<span asp-validation-for="@Model.City" class="text-danger"></span>
-	<button type="submit" class="btn btn-primary">Set</button>
 
-	<label>@Model.Lat</label>
-	<label>@Model.Lon</label>
-</form>
-
-@if(Model.Lat != 0 && Model.Lon != 0)
-{
 	<form asp-page-handler="add" method="post">
 		<div>
 			<div>
@@ -47,19 +34,19 @@
 
 			<div id="outdoor">
 				<label asp-for="@Model.WeatherData.OutCelsius">Celsius</label>
-				<input asp-for="@Model.WeatherData.OutCelsius" class="form-control" disabled/>
+				<input asp-for="@Model.WeatherData.OutCelsius" class="form-control" value="@Model.WeatherData.OutCelsius"  />
 				<span asp-validation-for="@Model.WeatherData.OutCelsius" class="text-danger"></span>
 
 				<br />
 
 				<label asp-for="@Model.WeatherData.Pressure">Pressure(hPa)</label>
-				<input asp-for="@Model.WeatherData.Pressure" class="form-control" disabled />
+				<input asp-for="@Model.WeatherData.Pressure" class="form-control" value="@Model.WeatherData.Pressure"  />
 				<span asp-validation-for="@Model.WeatherData.Pressure" class="text-danger"></span>
 
 				<br />
 
 				<label asp-for="@Model.WeatherData.Rain">Rain(mm)</label>
-				<input asp-for="@Model.WeatherData.Rain" class="form-control" disabled />
+				<input asp-for="@Model.WeatherData.Rain" class="form-control" value="@Model.WeatherData.Rain"  />
 				<span asp-validation-for="@Model.WeatherData.Rain" class="text-danger"></span>
 
 			</div>
@@ -67,4 +54,3 @@
 		</div>
 	</form>
 	
-}
