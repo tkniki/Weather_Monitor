@@ -39,7 +39,7 @@ namespace Weather_Monitor.Pages.Weather
              * 0 when a = b
              * + when a > b 
             */
-            if (from != DateTime.MinValue && to != DateTime.MaxValue)
+            if (from != DateTime.MinValue && to != DateTime.MinValue)
             {
                 weatherDatas = _db.WeatherDatas.Where(x => DateTime.Compare(from, x.Date) <= 0 && DateTime.Compare(to, x.Date) >= 0);
                 From = from;
