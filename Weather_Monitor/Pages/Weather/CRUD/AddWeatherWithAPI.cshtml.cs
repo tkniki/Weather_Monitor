@@ -57,43 +57,6 @@ namespace Weather_Monitor.Pages.Weather.CRUD
 			}
 			return Page();
 		}
-		/*public async void Ondsssssss(double temperature, double pressure, int rain)
-        {
-            if (temperature != 0 && pressure != 0 && rain != 0)
-            {
-				WeatherData.OutCelsius = temperature;
-				WeatherData.Pressure = pressure;
-				WeatherData.Rain = rain;
-			}
-        }*/
-
-        /*public async Task<IActionResult> OnPost()
-        {
-            var response = await _client.GetAsync($"http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=1&appid=ed3adae2b20a3ce0aee2eccc7e592c3a");
-            var result = await response.Content.ReadAsStringAsync();
-            //JsonResult obj = JsonConvert.DeserializeObject<JsonResult>(result);
-            if (result != "[]" || City.IsNullOrEmpty())
-            {
-                JArray array = JArray.Parse(result);
-                JObject obj = JObject.Parse(array[0].ToString());
-				double lat = double.Parse((obj["lat"]).ToString());
-				double lon = double.Parse((obj["lon"]).ToString());
-
-				Lat = lat;
-				Lon = lon;
-                SetOutdoorData(lat, lon);
-                OutdoorDataReceived= true;
-			}
-            else
-            {
-                ModelState.AddModelError("City", "City name is incorrect.");
-            }
-            
-
-            //return Page();
-
-			return RedirectToPage("./AddWeatherWithAPI", "OutsideWeather", new { temperature = OutTemp, pressure = OutPress, rain = OutRain });
-		}*/
 
         public async Task<IActionResult> OnPostAdd()
         {
