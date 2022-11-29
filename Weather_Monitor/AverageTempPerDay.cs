@@ -9,8 +9,7 @@
         public AverageTempPerDay(DateTime date, double averageTempInside, double averageTempOutside)
         {
             Date = date;
-            //AverageTempInside = averageTempInside;
-            AverageTempInside = Math.Round(averageTempOutside, 2);
+            AverageTempInside = Math.Round(averageTempInside, 2);
             AverageTempOutside = Math.Round(averageTempOutside, 2);
         }
     }
